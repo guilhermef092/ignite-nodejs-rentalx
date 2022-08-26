@@ -23,7 +23,7 @@ class ImportCategoryUseCase {
       stream.pipe(parseFile);
 
       parseFile
-        .on('data', async (line) => {
+        .on('data', async line => {
           const [name, description] = line;
 
           categories.push({
@@ -32,9 +32,10 @@ class ImportCategoryUseCase {
           });
         })
         .on('end', () => {
+          fs.promises.unlink(file.path);
           resolve(categories);
         })
-        .on('error', (err) => {
+        .on('error', err => {
           reject(err);
         });
     });
@@ -43,7 +44,7 @@ class ImportCategoryUseCase {
   async excecute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
-    categories.map(async (category) => {
+    categories.map(async category => {
       const { name, description } = category;
 
       const existsCategory = this.categoriesRepository.findByName(name);
