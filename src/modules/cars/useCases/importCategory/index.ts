@@ -6,7 +6,7 @@ const categoriesRepository = CategoriesRepository.getInstance();
 const importCategoryUseCase = new ImportCategoryUseCase(categoriesRepository);
 
 const importCategoryController = new ImportCategoryController(
-  importCategoryUseCase
+  importCategoryUseCase,
 );
 
 export { importCategoryController };
