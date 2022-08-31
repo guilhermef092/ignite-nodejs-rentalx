@@ -24,7 +24,7 @@ categoriesRoutes.post(
   uplodad.single('file'),
   (request, response) => {
     importCategoryController.handle(request, response);
-  }
+  },
 );
 
 export { categoriesRoutes };
