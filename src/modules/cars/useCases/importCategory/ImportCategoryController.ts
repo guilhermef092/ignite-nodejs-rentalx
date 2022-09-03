@@ -5,12 +5,15 @@ import { ImportCategoryUseCase } from './ImportCategoryUseCase';
 class ImportCategoryController {
   // eslint-disable-next-line prettier/prettier
   constructor(private importCategoryUseCase: ImportCategoryUseCase) { }
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request;
 
-    this.importCategoryUseCase.excecute(file);
+    if (!file) {
+      return response.status(400).json({ error: 'Field file is required' });
+    }
 
-    return response.send();
+    this.importCategoryUseCase.execute(file);
+    return response.status(201).send();
   }
 }
 

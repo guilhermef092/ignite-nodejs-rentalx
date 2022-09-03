@@ -5,11 +5,11 @@ import { CreateSpecificationUseCase } from './CreateSpecificationUseCase';
 const specificationsRepository = new SpecificationsRepository();
 
 const createSpecificationsUseCase = new CreateSpecificationUseCase(
-  specificationsRepository
+  specificationsRepository,
 );
 
 const createSpecificationsController = new CreateSpecificationController(
-  createSpecificationsUseCase
+  createSpecificationsUseCase,
 );
 
 export { createSpecificationsController };
