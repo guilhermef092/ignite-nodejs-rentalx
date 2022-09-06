@@ -7,10 +7,14 @@ class ImportCategoryController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request;
 
+    if (!file) {
+      return response.status(500).send();
+    }
+
     const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
 
     await importCategoryUseCase.execute(file);
-    return response.send();
+    return response.status(201).send();
   }
 }
 
