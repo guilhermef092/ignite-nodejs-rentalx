@@ -5,7 +5,7 @@ import {
   ICreateCategoryDTO,
 } from '@modules/cars/repositories/ICategoriesRepository';
 
-import { Category } from '../typeorm/entities/Category';
+import { Category } from '../entities/Category';
 
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;

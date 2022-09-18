@@ -78,7 +78,8 @@
         ]
       }
     ],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "prefer-arrow-callback": "off"
   },
   "settings": {
     "import/resolver": {
